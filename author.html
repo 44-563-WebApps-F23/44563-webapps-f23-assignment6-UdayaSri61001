@@ -25,7 +25,7 @@
     <label for="form1_nick">Guess the author</label>
     <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
     </div>
-    <input class="btn-primary mb-3" type="button" value="Check the guess" onclick="checkAuthor()">
+    <input class="btn btn-primary mb-3" type="button" value="Check the guess" onclick="checkAuthor()" id="checkButton">
 </form>
 
 
@@ -52,6 +52,12 @@ function checkAuthor(){
         oops=oops+1
         alert("Sorry")
     }
+    if(oops==7)
+    {
+      const checkButton = document.getElementById("checkButton");
+      checkButton.disabled = true;
+      alert("Sorry, ran out of guesses")
+    }
     output.innerHTML="good count "+good+"  oops count "+oops
     out.style.color="#ff0000"
     
@@ -63,8 +69,6 @@ function checkAuthor(){
 <div class="image-container" >
     <img src="indiana.jpg" alt="indiana" height="100" weight="100" id="image" onclick="selectImage()">
 </div>
-
-
 <script>
     let useimage=1
     function selectImage(){
